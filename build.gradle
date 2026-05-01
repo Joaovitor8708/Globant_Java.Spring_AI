@@ -1,0 +1,51 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+	id ("io.freefair.lombok") version "9.2.0"
+}
+
+group = 'dio'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+
+	implementation platform("org.springframework.ai:spring-ai-bom:1.0.0-M6")
+
+
+	implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
+
+
+	implementation 'org.springframework.ai:spring-ai-core'
+
+	implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
+
+	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

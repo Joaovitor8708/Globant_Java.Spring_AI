@@ -1,0 +1,25 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  application:
+    name: budgeting
+  ai:
+    openai:
+      api-key: ${GROQ_API_KEY}
+      base-url: https://api.groq.com/openai
+      chat:
+        options:
+          model: "llama-3.3-70b-versatile"
+          temperature: 0.0
+      audio:
+        transcription:
+          options:
+            model: whisper-large-v3
+            language: pt
+            response-format: text
+            prompt: "Audio em português brasileiro, contém descrições financeiras, onde costuma falar o local e o valor que foi gasto, todos os valores em REAL"
+
+logging:
+  level:
+    org.springframework.web: DEBUG
